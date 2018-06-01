@@ -1,12 +1,15 @@
 package com.blackdeath.hibernate.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -27,6 +30,9 @@ public class SocialMedia implements Serializable {
 	private String name;
 	@Column(name = "icon")
 	private String icon;
+	@OneToMany
+	@JoinColumn(name = "id_social_media")
+	private Set<TeacherSocialMedia> teacherSocialMedias;
 
 	public SocialMedia() {
 
@@ -60,6 +66,14 @@ public class SocialMedia implements Serializable {
 
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+
+	public Set<TeacherSocialMedia> getTeacherSocialMedias() {
+		return teacherSocialMedias;
+	}
+
+	public void setTeacherSocialMedias(Set<TeacherSocialMedia> teacherSocialMedias) {
+		this.teacherSocialMedias = teacherSocialMedias;
 	}
 
 }
