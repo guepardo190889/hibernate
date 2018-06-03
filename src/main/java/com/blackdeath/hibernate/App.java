@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.blackdeath.hibernate.model.Teacher;
+
 /**
  * Hello world!
  *
@@ -18,6 +20,12 @@ public class App {
 		SessionFactory sessionFactory = configuration.buildSessionFactory();
 
 		Session session = sessionFactory.openSession();
+
+		Teacher teacher = new Teacher("Seth Luis", "avatar");
+		session.beginTransaction();
+		session.save(teacher);
+		session.getTransaction().commit();
+		session.close();
 
 	}
 }
