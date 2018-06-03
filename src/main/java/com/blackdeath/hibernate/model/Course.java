@@ -26,16 +26,16 @@ public class Course implements Serializable {
 	@Column(name = "id_course")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCourse;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "themes")
 	private String themes;
-	
+
 	@Column(name = "project")
 	private String project;
-	
+
 	@ManyToOne(optional = true, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
@@ -44,12 +44,11 @@ public class Course implements Serializable {
 
 	}
 
-	public Course(String name, String themes, String project, Teacher teacher) {
+	public Course(String name, String themes, String project) {
 		super();
 		this.name = name;
 		this.themes = themes;
 		this.project = project;
-		this.teacher = teacher;
 	}
 
 	public Long getIdCourse() {

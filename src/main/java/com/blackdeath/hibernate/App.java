@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.blackdeath.hibernate.model.Course;
 import com.blackdeath.hibernate.model.Teacher;
 
 /**
@@ -25,7 +26,11 @@ public class App {
 		session.beginTransaction();
 		session.save(teacher);
 		session.getTransaction().commit();
-		session.close();
+
+		Course course = new Course("Java EE", "Tema 1", "Rest API");
+		session.beginTransaction();
+		session.save(course);
+		session.getTransaction().commit();
 
 	}
 }
