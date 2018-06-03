@@ -26,11 +26,14 @@ public class TeacherSocialMedia implements Serializable {
 	@Column(name = "id_teacher_social_media")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTeacherSocialMedia;
+	
 	@Column(name = "nickname")
 	private String nickname;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_social_media")
 	private SocialMedia socialMedia;
@@ -41,6 +44,7 @@ public class TeacherSocialMedia implements Serializable {
 
 	public TeacherSocialMedia(String nickname, Teacher teacher, SocialMedia socialMedia) {
 		super();
+		this.nickname = nickname;
 		this.teacher = teacher;
 		this.socialMedia = socialMedia;
 	}

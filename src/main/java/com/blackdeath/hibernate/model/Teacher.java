@@ -27,12 +27,16 @@ public class Teacher implements Serializable {
 	@Column(name = "id_teacher")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTeacher;
+
 	@Column(name = "name")
 	private String name;
+
 	@Column(name = "avatar")
 	private String avatar;
-	@OneToMany(mappedBy = "teacher	")
+
+	@OneToMany(mappedBy = "teacher")
 	private Set<Course> courses;
+
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_teacher")
 	private Set<TeacherSocialMedia> teacherSocialMedias;

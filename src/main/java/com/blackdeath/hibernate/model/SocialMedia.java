@@ -26,10 +26,13 @@ public class SocialMedia implements Serializable {
 	@Column(name = "id_social_media")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idSocialMedia;
+	
 	@Column(name = "name")
 	private String name;
+	
 	@Column(name = "icon")
 	private String icon;
+	
 	@OneToMany
 	@JoinColumn(name = "id_social_media")
 	private Set<TeacherSocialMedia> teacherSocialMedias;

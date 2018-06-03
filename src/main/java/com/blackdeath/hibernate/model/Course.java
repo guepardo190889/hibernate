@@ -26,12 +26,16 @@ public class Course implements Serializable {
 	@Column(name = "id_course")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCourse;
+	
 	@Column(name = "name")
 	private String name;
+	
 	@Column(name = "themes")
 	private String themes;
+	
 	@Column(name = "project")
 	private String project;
+	
 	@ManyToOne(optional = true, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
