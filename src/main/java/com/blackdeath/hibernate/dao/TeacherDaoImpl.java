@@ -10,10 +10,16 @@ import com.blackdeath.hibernate.model.Teacher;
  */
 public class TeacherDaoImpl extends AppSession implements TeacherDao {
 
+	private AppSession session;
+
+	public TeacherDaoImpl() {
+		session = new AppSession();
+	}
+
 	@Override
 	public void saveTeacher(Teacher teacher) {
-		// TODO Auto-generated method stub
-
+		session.getSession().persist(teacher);
+		session.getSession().getTransaction().commit();
 	}
 
 	@Override
@@ -30,8 +36,7 @@ public class TeacherDaoImpl extends AppSession implements TeacherDao {
 
 	@Override
 	public List<Teacher> findAllTeachers() {
-		// TODO Auto-generated method stub
-		return null;
+		return session.getSession().createQuery("FROM Teacher").list();
 	}
 
 	@Override

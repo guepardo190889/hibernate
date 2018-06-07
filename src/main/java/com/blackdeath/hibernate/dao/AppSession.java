@@ -9,14 +9,20 @@ import org.hibernate.cfg.Configuration;
  *
  */
 public class AppSession {
-	public Session getSession() {
+
+	private Session session;
+
+	public AppSession() {
 		Configuration configuration = new Configuration();
 		configuration.configure();
 
 		SessionFactory sessionFactory = configuration.buildSessionFactory();
 
-		Session session = sessionFactory.openSession();
+		session = sessionFactory.openSession();
+		session.beginTransaction();
+	}
 
+	public Session getSession() {
 		return session;
 	}
 }
